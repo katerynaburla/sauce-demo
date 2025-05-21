@@ -1,1 +1,0 @@
-# Test Automation Project for Swag Labs
