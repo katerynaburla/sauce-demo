@@ -35,3 +35,22 @@ project-root/
  - SLF4J & Logback: Logging framework
  - Allure: Test reporting
 ---
+## Installation
+
+1. Clone the repository:
+```
+git clone https://github.com/katerynaburla/sauce-demo.git
+cd sauce-demo
+```
+2. Build the project:
+```
+mvn clean install
+```
+---
+## Commands to run
+ - tests execution `mvn clean test`
+ - allure report generate and view `mvn io.qameta.allure:allure-maven:2.10.0:serve`
+---
+## License
+Author: Kateryna Burla
+
