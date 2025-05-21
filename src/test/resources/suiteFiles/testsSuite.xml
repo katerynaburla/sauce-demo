@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Swag Labs Test Suite">
-    <test name="LoginTests">
+    <test name="LoginTests" parallel="classes">
         <classes>
             <class name="LoginTests"/>
         </classes>

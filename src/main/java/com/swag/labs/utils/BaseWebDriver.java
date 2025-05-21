@@ -14,12 +14,6 @@ public class BaseWebDriver {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized");
-//            options.addArguments("--test-type");
-//            options.addArguments("--no-sandbox");
-//            options.addArguments("--ignore-certificate-errors");
-//            options.addArguments("--disable-popup-blocking");
-//            options.addArguments("--disable-save-password-bubble");
-
             options.addArguments("--disable-default-apps");
             options.addArguments("--incognito");
             driver.set(new ChromeDriver(options));

@@ -5,6 +5,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Story;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static com.swag.labs.config.ConfigReader.*;
@@ -33,9 +34,10 @@ public class LoginTests extends BaseTest {
         };
     }
 
-    @Test(description = "Verify credentials inputs validation for the 'Locked Out user'")
+    @Test(testName = "Verifying login validation for the 'Locked Out user'")
     @Epic("Login")
     @Story("Login validation")
+    @Parameters({"Login", "Password"})
     public void validationForLockedOutUser() {
         loginPage.setCredentials("", "");
         verifyErrorMessage(ErrorMessage.USERNAME_IS_REQUIRED);
@@ -50,9 +52,10 @@ public class LoginTests extends BaseTest {
         verifyErrorMessage(ErrorMessage.LOCKED_OUT_USER);
     }
 
-    @Test(dataProvider = "credentials", description = "Verify credentials inputs validation")
+    @Test(dataProvider = "credentials", description = "Verifying login validation")
     @Epic("Login")
     @Story("Login validation")
+    @Parameters({"Login", "Password"})
     public void loginValidation(String username, String password) {
         loginPage.setCredentials("", "");
         verifyErrorMessage(ErrorMessage.USERNAME_IS_REQUIRED);
@@ -64,17 +67,19 @@ public class LoginTests extends BaseTest {
         verifyErrorMessage(ErrorMessage.DO_NOT_MATCH_ANY);
     }
 
-    @Test(dataProvider = "credentials", description = "Verify that user is able to log in")
+    @Test(dataProvider = "credentials", testName = "Verifying successful log in")
     @Epic("Login")
     @Story("Login")
+    @Parameters({"Login", "Password"})
     public void login(String username, String password) {
         productsPage = loginPage.login(username, password);
         assertTrue(productsPage.isProductsHeaderVisible(), "The 'Products' header should be visible");
     }
 
-    @Test(dataProvider = "credentials", description = "Verify that user is able to log out")
+    @Test(dataProvider = "credentials", testName = "Verifying successful log out")
     @Epic("Login")
     @Story("Logout")
+    @Parameters({"Login", "Password"})
     public void logout(String username, String password) {
         productsPage = loginPage.login(username, password);
         loginPage = productsPage.logout();

@@ -1,5 +1,6 @@
 package com.swag.labs.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,27 +22,28 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    @Step("Check whether the 'Login' page is opened")
     public boolean isLoginPageOpened() {
-        logger.info("Check whether the 'Login' page is opened");
         boolean isDisplayed = usernameInput.isDisplayed();
         logger.debug("The 'Login' page is opened: {}", isDisplayed);
         return isDisplayed;
     }
 
+    @Step("Check whether the error message is displayed")
     public boolean isErrorVisible() {
-        logger.info("Check whether the error message is displayed");
         boolean isDisplayed = errorMessageContainer.isDisplayed();
-        logger.debug("Error visible: {}", isDisplayed);
+        logger.info("Error message is visible: {}", isDisplayed);
         return isDisplayed;
     }
 
+    @Step("Get the error message")
     public String getErrorMessage() {
-        logger.info("Get the error");
         String error = errorMessageContainer.getText();
-        logger.debug("Error message: {}", error);
+        logger.info("Error message is: {}", error);
         return error;
     }
 
+    @Step("Set username: '{name}' and password: {password}")
     public void setCredentials(String name, String password) {
         logger.info("Set username: {} and password: {}", name, password);
         setValue(usernameInput, name);
@@ -49,6 +51,7 @@ public class LoginPage extends BasePage {
         loginButton.click();
     }
 
+    @Step("Log In as: '{name}' with password: {password}")
     public ProductsPage login(String name, String password) {
         logger.info("Login as: {} with: {}", name, password);
         this.setCredentials(name, password);
