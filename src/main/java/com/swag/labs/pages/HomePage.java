@@ -1,6 +1,7 @@
 package com.swag.labs.pages;
 
 import com.swag.labs.enums.MenuItem;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class HomePage extends BasePage {
 
     protected final WebElement headerTitle = driver.findElement(By.className("title"));
-
     private final WebElement burgerMenuButton = driver.findElement(By.className("bm-burger-button"));
 
     public HomePage(WebDriver driver) {
@@ -27,6 +27,10 @@ public class HomePage extends BasePage {
         item.click();
     }
 
+    @Step("App reset")
+    public void appReset() {
+        this.selectMenuItem(MenuItem.RESET_APP_STATE);
+    }
 }
 
 

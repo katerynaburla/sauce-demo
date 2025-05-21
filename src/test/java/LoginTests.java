@@ -1,3 +1,4 @@
+import com.swag.labs.components.ErrorMessageComponent;
 import com.swag.labs.enums.ErrorMessage;
 import com.swag.labs.pages.LoginPage;
 import com.swag.labs.pages.ProductsPage;
@@ -39,14 +40,7 @@ public class LoginTests extends BaseTest {
     @Story("Login validation")
     @Parameters({"Login", "Password"})
     public void validationForLockedOutUser() {
-        loginPage.setCredentials("", "");
-        verifyErrorMessage(ErrorMessage.USERNAME_IS_REQUIRED);
-
-        loginPage.setCredentials(getLockedOutUser(), "");
-        verifyErrorMessage(ErrorMessage.PASSWORD_IS_REQUIRED);
-
-        loginPage.setCredentials(getPassword(), getLockedOutUser());
-        verifyErrorMessage(ErrorMessage.DO_NOT_MATCH_ANY);
+        verifyInputsValidation(getLockedOutUser(), getPassword(), getLockedOutUser());
 
         loginPage.setCredentials(getLockedOutUser(), getPassword());
         verifyErrorMessage(ErrorMessage.LOCKED_OUT_USER);
@@ -57,14 +51,7 @@ public class LoginTests extends BaseTest {
     @Story("Login validation")
     @Parameters({"Login", "Password"})
     public void loginValidation(String username, String password) {
-        loginPage.setCredentials("", "");
-        verifyErrorMessage(ErrorMessage.USERNAME_IS_REQUIRED);
-
-        loginPage.setCredentials(username, "");
-        verifyErrorMessage(ErrorMessage.PASSWORD_IS_REQUIRED);
-
-        loginPage.setCredentials(password, username);
-        verifyErrorMessage(ErrorMessage.DO_NOT_MATCH_ANY);
+        verifyInputsValidation(username, password, username);
     }
 
     @Test(dataProvider = "credentials", testName = "Verifying successful log in")
@@ -73,7 +60,7 @@ public class LoginTests extends BaseTest {
     @Parameters({"Login", "Password"})
     public void login(String username, String password) {
         productsPage = loginPage.login(username, password);
-        assertTrue(productsPage.isProductsHeaderVisible(), "The 'Products' header should be visible");
+        assertTrue(productsPage.isPageOpened(), "The 'Products' header should be visible");
     }
 
     @Test(dataProvider = "credentials", testName = "Verifying successful log out")
@@ -83,13 +70,24 @@ public class LoginTests extends BaseTest {
     public void logout(String username, String password) {
         productsPage = loginPage.login(username, password);
         loginPage = productsPage.logout();
-        assertTrue(loginPage.isLoginPageOpened(), "The 'Login' page should be opened");
+        assertTrue(loginPage.isPageOpened(), "The 'Login' page should be opened");
     }
 
     private void verifyErrorMessage(ErrorMessage message) {
-        assertTrue(loginPage.isErrorVisible(), "Error message should is visible");
-        assertEquals(loginPage.getErrorMessage(), message.getMessage(),
+        ErrorMessageComponent error = new ErrorMessageComponent(driver);
+        assertEquals(error.getErrorMessage(), message.getMessage(),
                 "Wrong verification message!");
+    }
+
+    private void verifyInputsValidation(String LockedOutUser, String Password, String LockedOutUser1) {
+        loginPage.setCredentials("", "");
+        verifyErrorMessage(ErrorMessage.USERNAME_IS_REQUIRED);
+
+        loginPage.setCredentials(LockedOutUser, "");
+        verifyErrorMessage(ErrorMessage.PASSWORD_IS_REQUIRED);
+
+        loginPage.setCredentials(Password, LockedOutUser1);
+        verifyErrorMessage(ErrorMessage.DO_NOT_MATCH_ANY);
     }
 }
 

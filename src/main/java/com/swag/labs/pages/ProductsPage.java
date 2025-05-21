@@ -26,7 +26,7 @@ public class ProductsPage extends HomePage {
     }
 
     @Step("Check whether the 'Products' page is opened")
-    public boolean isProductsHeaderVisible() {
+    public boolean isPageOpened() {
         boolean isDisplayed = this.headerTitle.getText().equalsIgnoreCase("Products");
         logger.info("The 'Products' page is opened: {}", isDisplayed);
         return isDisplayed;
@@ -56,6 +56,13 @@ public class ProductsPage extends HomePage {
         int numberOfItemsInTheCart = Integer.parseInt(text);
         logger.info("There are {} items in the cart", numberOfItemsInTheCart);
         return numberOfItemsInTheCart;
+    }
+
+    @Step("Open the shopping cart")
+    public CartPage openShoppingCart() {
+        shoppingCartButton.click();
+        logger.info("The cart page is opened");
+        return new CartPage(driver);
     }
 
     @Step("Sort products")

@@ -40,4 +40,16 @@ public class ConfigReader {
     public static String getPerformanceGlitchUser() {
         return config.performanceGlitchUser();
     }
+
+    public static String getFirstName() {
+        return config.firstName();
+    }
+
+    public static String getLastName() {
+        return config.lastName();
+    }
+
+    public static String getPostalCode() {
+        return config.postalCode();
+    }
 }

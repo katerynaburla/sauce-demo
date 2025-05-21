@@ -28,4 +28,13 @@ public interface AppConfig extends Config {
 
     @Key("performance.glitch.user")
     String performanceGlitchUser();
+
+    @Key("first.name")
+    String firstName();
+
+    @Key("last.name")
+    String lastName();
+
+    @Key("postal.code")
+    String postalCode();
 }
