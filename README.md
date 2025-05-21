@@ -1,1 +1,1 @@
-# sauce-demo
+# Test Automation Project for Swag Labs

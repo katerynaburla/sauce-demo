@@ -1,0 +1,10 @@
+# JetBrains IDE
+.idea
+
+# Maven
+.mvn
+target
+
+# Allure
+allure-report
+allure-results
