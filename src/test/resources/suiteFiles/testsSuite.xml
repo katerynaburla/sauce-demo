@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Swag Labs Test Suite">
-    <test name="LoginTests" thread-count="2" parallel="tests">
+    <test name="LoginTests" thread-count="2" parallel="classes">
         <classes>
             <class name="LoginTests"/>
         </classes>
