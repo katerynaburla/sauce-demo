@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+  schedule:
+      - cron: "0 1 * * *"
+
 jobs:
   build:
 
@@ -19,12 +22,9 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-        
-    - name: Build Maven
-      run: mvn clean install
 
     - name: Run tests with Maven
-      run: mvn test
+      run: mvn clean test
       continue-on-error: true
 
     - name: Generate Allure report

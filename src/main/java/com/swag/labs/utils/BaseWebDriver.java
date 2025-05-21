@@ -7,22 +7,26 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class BaseWebDriver {
 
-    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static WebDriver driver;
 
     public static WebDriver getDriver() {
-        if (driver.get() == null) {
-            WebDriverManager.chromedriver().setup();
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--start-maximized");
-            options.addArguments("--disable-default-apps");
-            options.addArguments("--incognito");
-            driver.set(new ChromeDriver(options));
+        if (driver == null) {
+            synchronized (BaseWebDriver.class) {
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--start-maximized");
+                options.addArguments("--disable-default-apps");
+                options.addArguments("--incognito");
+                driver = new ChromeDriver(options);
+            }
         }
-        return driver.get();
+        return driver;
     }
 
     public static void quit() {
-        driver.get().quit();
-        driver.set(null);
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }

@@ -1,18 +1,18 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Swag Labs Test Suite">
-    <test name="LoginTests">
-        <packages>
-            <package name="LoginTests"/>
-        </packages>
+    <test name="LoginTests" thread-count="2" parallel="tests">
+        <classes>
+            <class name="LoginTests"/>
+        </classes>
     </test>
     <test name="ProductTests">
-        <packages>
-            <package name="ProductTests"/>
-        </packages>
+        <classes>
+            <class name="ProductTests"/>
+        </classes>
     </test>
     <test name="CheckoutTests">
-        <packages>
-            <package name="CheckoutTests"/>
-        </packages>
+        <classes>
+            <class name="CheckoutTests"/>
+        </classes>
     </test>
 </suite>
