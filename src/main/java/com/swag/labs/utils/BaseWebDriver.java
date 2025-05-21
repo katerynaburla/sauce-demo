@@ -23,7 +23,7 @@ public class BaseWebDriver {
         return driver;
     }
 
-    public static void quit() {
+    public static void quitDriver() {
         if (driver != null) {
             driver.quit();
             driver = null;

@@ -15,6 +15,6 @@ public class BaseTest {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
-        BaseWebDriver.quit();
+        BaseWebDriver.quitDriver();
     }
 }
