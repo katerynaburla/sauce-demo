@@ -28,7 +28,7 @@ jobs:
         run: mvn clean test
         continue-on-error: true
 
-      - name: Load test report history
+      - name: Get Allure history
         uses: actions/checkout@v3
         if: always()
         continue-on-error: true
@@ -36,18 +36,31 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Build test report
-        uses: simple-elf/allure-report-action@v1.7
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
         if: always()
+        id: allure-report
         with:
+          allure_results: allure-results
+          allure_report: allure-report
           gh_pages: gh-pages
           allure_history: allure-history
-          allure_results: build/allure-results
+          keep_reports: 7
 
-      - name: Publish test report
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy Report To Github Pages
         if: always()
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
+
+      - name: Post the link to the report
+        if: always()
+        uses: Sibz/github-status-action@v1
+        with:
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          context: 'Test report'
+          state: 'success'
+          sha: ${{ github.event.pull_request.head.sha }}
+          target_url: simple-elf.github.io/github-allure-history/${{ github.run_number }}
