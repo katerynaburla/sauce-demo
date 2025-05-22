@@ -18,8 +18,8 @@ public class BaseWebDriver {
                         .addArguments("--incognito")
                         .addArguments("--guest")
                         .addArguments("--no-sandbox")
-                        .addArguments("--disable-default-apps");
-                System.setProperty("webdriver.http.factory", "jdk-http-client");
+                        .addArguments("--disable-default-apps")
+                        .addArguments("--headless=new");
 
                 driver = new ChromeDriver(options);
             }
