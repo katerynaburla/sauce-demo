@@ -14,10 +14,14 @@ public class BaseWebDriver {
             synchronized (BaseWebDriver.class) {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
-                options.addArguments("--start-maximized");
-                options.addArguments("--incognito");
-                options.addArguments("--disable-default-apps");
-                options.addArguments("--headless=new");
+                options.addArguments("--start-maximized")
+                        .addArguments("--incognito")
+                        .addArguments("--guest")
+                        .addArguments("--no-sandbox")
+                        .addArguments("--disable-default-apps")
+                        .addArguments("--headless=new");
+                System.setProperty("webdriver.http.factory", "jdk-http-client");
+
                 driver = new ChromeDriver(options);
             }
         }
