@@ -26,17 +26,49 @@ project-root/
 └── target/
 └── allure-results/   # Test execution results
 ```
----
 
+
+### Key Features:
+
+- Modular design
+- Reusable components
+- Parameterized tests for flexible execution
+- Well-organized structure for easier maintenance
+---
+### Page Object Models (POMs) implementation
+ - A page object represents a part of web application  
+ - Captures element selectors in one place
+ - Create reusable code to avoid repetition
+
+### WebDriver Implementation
+- Singleton pattern for WebDriver management
+- Thread-safe implementation
+- Custom wait strategies
+
+### Reporting implementation
+   - Detailed test execution reports
+   - Test result visualization
+   - Step-by-step execution details
+   - Failure analysis
+   - Attachments
+
+### Continuous Integration
+ - GitHub Actions CI/CD integration
+ - Automated test execution
+ - Nightly test execution
+ - Report generation
+---
 
 ## Technologies Used
- - Java 17: Core programming language
- - Maven: Build automation and dependency management
- - Selenium: Browser automation
- - TestNG: Test execution framework
- - SLF4J & Logback: Logging framework
- - Allure: Test reporting
+- Java 17: Core programming language
+- Maven: Build automation and dependency management
+- Selenium: Browser automation
+- TestNG: Test execution framework
+- SLF4J & Logback: Logging framework
+- Allure: Test reporting
+- GitHub Actions: CI/CD tool
 ---
+
 ## Installation and execution
 
 1. Clone the repository:
