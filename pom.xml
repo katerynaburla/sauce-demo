@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <selenium.version>4.31.0</selenium.version>
+        <selenium.version>4.32.0</selenium.version>
         <testng.version>7.11.0</testng.version>
         <allure.version>2.24.0</allure.version>
         <slf4j.version>2.0.17</slf4j.version>
@@ -95,6 +95,11 @@
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.13.0</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
@@ -124,6 +129,10 @@
                         <argLine>
                             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                         </argLine>
+                        <systemPropertyVariables>
+                            <allure.results.directory>${project.build.directory}/allure-results
+                            </allure.results.directory>
+                        </systemPropertyVariables>
                     </configuration>
                     <dependencies>
                         <dependency>

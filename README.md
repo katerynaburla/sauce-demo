@@ -1,4 +1,4 @@
-# Test Automation Project for Swag Labs
+# Sauce Demo. Test Automation Project
 
 This is a test example of a UI automation framework. 
 The project is built using Selenium, TestNG, and Allure for comprehensive test reporting.
@@ -27,6 +27,8 @@ project-root/
 └── allure-results/   # Test execution results
 ```
 ---
+
+
 ## Technologies Used
  - Java 17: Core programming language
  - Maven: Build automation and dependency management
@@ -35,7 +37,7 @@ project-root/
  - SLF4J & Logback: Logging framework
  - Allure: Test reporting
 ---
-## Installation
+## Installation and execution
 
 1. Clone the repository:
 ```
@@ -46,10 +48,14 @@ cd sauce-demo
 ```
 mvn clean install
 ```
----
-## Commands to run
- - tests execution `mvn clean test`
- - allure report generate and view `mvn io.qameta.allure:allure-maven:2.10.0:serve`
+3. tests execution
+```
+mvn clean test
+```
+4. allure report generate and view 
+```
+mvn io.qameta.allure:allure-maven:2.10.0:serve
+```
 ---
 ## License
 Author: Kateryna Burla

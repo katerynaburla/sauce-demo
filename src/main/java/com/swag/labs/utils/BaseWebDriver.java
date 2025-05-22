@@ -15,9 +15,9 @@ public class BaseWebDriver {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--start-maximized");
-                options.addArguments("--disable-default-apps");
-                options.addArguments("--user-data-dir");
                 options.addArguments("--incognito");
+                options.addArguments("--disable-default-apps");
+                options.addArguments("--headless=new");
                 driver = new ChromeDriver(options);
             }
         }
