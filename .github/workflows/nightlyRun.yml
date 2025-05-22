@@ -47,10 +47,11 @@ jobs:
           allure_history: allure-history
           keep_reports: 7
 
-      - name: Deploy Report To Github Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Deploy to Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-history
+          token: ${{ secrets.GITHUB_TOKEN }}
+          timeout: 600000
+          artifact_name: github-pages
+          preview: false
