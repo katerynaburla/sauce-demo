@@ -27,8 +27,6 @@ project-root/
 └── allure-results/   # Test execution results
 ```
 ---
-
-
 ## Technologies Used
  - Java 17: Core programming language
  - Maven: Build automation and dependency management
@@ -36,6 +34,14 @@ project-root/
  - TestNG: Test execution framework
  - SLF4J & Logback: Logging framework
  - Allure: Test reporting
+ - GitHub Actions: CI/CD tool
+---
+### Key Features:
+
+- Modular design
+- Reusable components
+- Well-organized structure for easier maintenance
+  
 ---
 ## Installation and execution
 
