@@ -27,7 +27,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Run tests with Maven
-        run: mvn clean test
+        run: mvn clean install
         continue-on-error: true
 
       - name: Get Allure history
