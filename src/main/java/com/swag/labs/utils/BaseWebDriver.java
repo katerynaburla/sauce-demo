@@ -19,8 +19,8 @@ public class BaseWebDriver {
                     .addArguments("--incognito")
                     .addArguments("--guest")
                     .addArguments("--no-sandbox")
-                    .addArguments("--disable-default-apps");
-//                        .addArguments("--headless=new")
+                    .addArguments("--disable-default-apps")
+                    .addArguments("--headless=new");
             driver.set(ThreadGuard.protect(new ChromeDriver(options)));
         }
         return driver.get();
