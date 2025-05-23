@@ -71,22 +71,33 @@ project-root/
 
 ## Installation and execution
 
-1. Clone the repository:
+### 1. Clone the repository:
 ```
 git clone https://github.com/katerynaburla/sauce-demo.git
 cd sauce-demo
 ```
-2. Build the project:
+### 2. Build the project:
 ```
 mvn clean install
 ```
-3. tests execution
+
+### 3. Tests execution:
+ - to run all tests: 
 ```
-mvn clean test
+mvn test
+``` 
+ - to run a specific test (e.g., LoginTests.java): 
 ```
-4. allure report generate and view 
+mvn test -Dtest=LoginTests
+ ```
+ - to run tests in a few threads (e.g., 2): 
 ```
-mvn io.qameta.allure:allure-maven:2.10.0:serve
+mvn clean test -Dthread-count=2
+```
+
+### 4.allure report generate and view 
+```
+mvn allure::serve
 ```
 ---
 ## License
