@@ -19,7 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -27,7 +26,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Run tests with Maven
-        run: mvn clean test
+        run: mvn clean install
         continue-on-error: true
 
       - name: Get Allure history
@@ -44,7 +43,7 @@ jobs:
         id: allure-report
         with:
           gh_pages: gh-pages
-          allure_results: allure-results
+          allure_results: ./target/allure-results
           allure_report: allure-report
           allure_history: allure-history
           keep_reports: 7
