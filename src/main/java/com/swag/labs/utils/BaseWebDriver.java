@@ -16,11 +16,12 @@ public class BaseWebDriver {
         if (driver.get() == null) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized")
+                    .addArguments("--headless=new")
                     .addArguments("--incognito")
-                    .addArguments("--guest")
                     .addArguments("--no-sandbox")
+                    .addArguments("--disable-gpu")
                     .addArguments("--disable-default-apps")
-                    .addArguments("--headless=new");
+            ;
             driver.set(ThreadGuard.protect(new ChromeDriver(options)));
         }
         return driver.get();
