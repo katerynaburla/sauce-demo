@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>sauce.demo.com</groupId>
-    <artifactId>my-app</artifactId>
+    <artifactId>sauce-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -129,12 +129,7 @@
                         <argLine>
                             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                         </argLine>
-                        <systemProperties>
-                            <property>
-                                <name>allure.results.directory</name>
-                                <value>${project.build.directory}/allure-results</value>
-                            </property>
-                        </systemProperties>
+                        <suiteXmlFiles>src/test/resources/suiteFiles/testng.xml</suiteXmlFiles>
                     </configuration>
                     <dependencies>
                         <dependency>
@@ -161,10 +156,6 @@
                     <groupId>io.qameta.allure</groupId>
                     <artifactId>allure-maven</artifactId>
                     <version>2.10.0</version>
-                    <configuration>
-                        <reportVersion>${allure.version}</reportVersion>
-                        <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

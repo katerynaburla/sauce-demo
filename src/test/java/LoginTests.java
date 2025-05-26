@@ -44,6 +44,9 @@ public class LoginTests extends BaseTest {
 
         loginPage.setCredentials(getLockedOutUser(), getPassword());
         verifyErrorMessage(ErrorMessage.LOCKED_OUT_USER);
+
+        loginPage.setCredentials("", getPassword());
+        verifyErrorMessage(ErrorMessage.FIRST_NAME_IS_REQUIRED);
     }
 
     @Test(dataProvider = "credentials", description = "Verifying login validation")

@@ -1,20 +1,19 @@
 import com.swag.labs.utils.BaseWebDriver;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
     protected WebDriver driver;
 
-    @BeforeClass
-    public void setUpBeforeClass() {
+    @BeforeMethod
+    public synchronized void setUpBeforeClass() {
         this.driver = BaseWebDriver.getDriver();
     }
 
-
-    @AfterClass(alwaysRun = true)
-    public void tearDown() {
+    @AfterMethod(alwaysRun = true)
+    public synchronized void tearDown() {
         BaseWebDriver.quitDriver();
     }
 }
